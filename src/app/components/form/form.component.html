@@ -1,0 +1,27 @@
+<div class="all_div">
+
+<div class="form_div">
+
+<div class="form_image_input_div" >
+  <label class="imag_label">Imaginile produsului:</label>
+  <img [src]="imageUrl" *ngIf="imageUrl">
+  <input class="form_image_input" type="file"  multiple (change)="getBase64Image($event)">
+</div>
+  <input class="form_Inputs" type="text" placeholder="Numele Produsului:" [(ngModel)]="this.NumeProdus" >
+  <input class="form_Inputs" type="text" placeholder="Numar Produse:" [(ngModel)]="this.NumarProduse">
+  <input class="form_Inputs" type="text" placeholder="Pret:" [(ngModel)]="this.PretProdus">
+  <div class="categ_div">
+  <input class="form_Inputs" type="text" placeholder="Categorie:" [(ngModel)]="this.CategorieProdus" >
+  <button class="categ_button" type="button" (click)="toggleCategorii()" ><img class="expand" src="assets/expand.png" alt=""> </button>
+</div>
+<div class="side_bar"  *ngIf="toggleCat">
+<div>
+    <div class="categorii" type="button"
+   *ngFor="let categorie of categorii; let i = index "type="button" (click)="selectCateg(i)"> {{categorie}}
+  </div>
+  </div>
+</div>
+  <div class="submit_button" type="button" (click)="addNewProduct()" >Submit</div>
+</div>
+
+</div>

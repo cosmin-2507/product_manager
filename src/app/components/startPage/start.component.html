@@ -1,0 +1,59 @@
+
+
+
+<div class="allDiv">
+
+ <div class="top_bar">
+
+<div class="title_div">
+  <H2 class="title" >Gaem</H2>
+</div>
+
+<div class="search_bar_div">
+  <input class="search_bar" type="text" placeholder =" Cautare ">
+  <button class="search_button"><img class="search_button_icon" src="assets/search.black.png" alt=""></button>
+</div>
+
+<div class="menu_cart_div">
+  <button class="menu_button"><img class="menu_button_icon" src="assets/cart.black.png" alt="" (click)="toggleCart()"></button>
+  <button class="menu_button"><img class="menu_button_icon" src="assets/menu.black.png" alt="" routerLink="form"></button>
+</div>
+
+</div>
+<div class="cartDiv" *ngIf="toggleCar" >
+  <div *ngFor="let varProduct of filteredByCart ;">
+     <p>nume:{{varProduct.nume}}</p>
+    <p>pret:{{varProduct.pret}}</p>
+    <p>stock:{{varProduct.nrStock}}</p></div>
+</div>
+<div class="side_bar_products">
+  <div>
+<div class="side_bar_title"><h2 class="categ">Categorii:</h2> <button class="side_bar_button" (click) = "toggleCategorii()" ><img class="menu_button_icon" src="assets/menu.black.png" alt=""></button> </div>
+<div class="side_bar"  *ngIf="toggleCat">
+
+  <div  >
+    <div class="categorii"
+   *ngFor="let categorie of categorii; let i = index" (click)="filterProduse(categorie)"> {{categorie}}
+  </div>
+  </div>
+</div>
+</div>
+<div class="products_div"   >
+<div class="product" *ngFor="let varProduct of filterArray">
+  <div class="div_imag_buttons">
+    <div class="buttons_imag">
+    <div class="image_button" (click)="changeImageLeft(varProduct.id)"></div>
+    <div class="image_button"  (click)="  changeImageRight(varProduct.id)"></div>
+  </div>
+    <img class="imag_prod" [src]="varProduct.images[varProduct.currentIndex]" *ngIf="varProduct.images[varProduct.currentIndex]">
+
+  </div>
+  <p>{{varProduct.nume}}</p>
+  <p class="pret"> {{varProduct.pret}} Lei</p>
+<div class="product_cart_button" type="button" (click)="addToCart(varProduct.id)"><img class="menu_button_icon" src="assets/cart.black.png" alt=""></div>
+
+</div>
+
+</div>
+</div>
+</div>
